@@ -128,7 +128,7 @@ Commands:
   config     Configure git-share
 
 Options:
-  --port <port>       Port to listen on (default: 8080)
+  --port <port>       Port to listen on (default: 9720)
   --readonly          Enable read-only mode (clone only, no push)
   --readwrite         Enable read-write mode (allow push)
   --hostname <addr>   Hostname or IP to bind to

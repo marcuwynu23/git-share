@@ -18,7 +18,7 @@ type Config struct {
 
 func Default() *Config {
 	return &Config{
-		Port:     8080,
+		Port:     9720,
 		ReadOnly: false,
 		Hostname: "",
 		Timeout:  0,
@@ -79,7 +79,7 @@ func Save(cfg *Config) error {
 }
 
 func (c *Config) Merge(c2 *Config) {
-	if c2.Port != 0 && c2.Port != 8080 {
+	if c2.Port != 0 && c2.Port != 9720 {
 		c.Port = c2.Port
 	}
 	c.ReadOnly = c2.ReadOnly
