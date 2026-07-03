@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/markwayne/git-share/internal/git"
+	"github.com/marcuwynu23/git-share/internal/git"
 )
 
 func testHandler(t *testing.T) *Handler {

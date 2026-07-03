@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/markwayne/git-share/internal/discovery"
-	"github.com/markwayne/git-share/internal/git"
-	"github.com/markwayne/git-share/internal/ui"
+	"github.com/marcuwynu23/git-share/internal/discovery"
+	"github.com/marcuwynu23/git-share/internal/git"
+	"github.com/marcuwynu23/git-share/internal/ui"
 )
 
 type Handler struct {

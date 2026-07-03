@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/markwayne/git-share/internal/discovery"
-	"github.com/markwayne/git-share/internal/git"
-	"github.com/markwayne/git-share/internal/middleware"
+	"github.com/marcuwynu23/git-share/internal/discovery"
+	"github.com/marcuwynu23/git-share/internal/git"
+	"github.com/marcuwynu23/git-share/internal/middleware"
 )
 
 type ServerConfig struct {
