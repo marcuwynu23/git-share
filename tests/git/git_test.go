@@ -180,7 +180,7 @@ func TestHandleSmartHTTPBare(t *testing.T) {
 	execGit(cloneDir, "config", "user.email", "test@test.com")
 	execGit(cloneDir, "config", "user.name", "Test")
 	execGit(cloneDir, "commit", "--allow-empty", "-m", "initial")
-	execGit(cloneDir, "push", "origin", "main")
+	execGit(cloneDir, "push", "origin", "HEAD:main")
 
 	info := &git.RepoInfo{
 		Root:     bareDir,
