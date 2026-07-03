@@ -63,24 +63,30 @@ func (s *Server) Start(ctx context.Context) error {
 	addrs := discovery.Discover()
 	repoName := filepath.Base(s.handler.Repo.Root)
 
+	lis, err := net.Listen("tcp", s.http.Addr)
+	if err != nil {
+		return fmt.Errorf("listen: %w", err)
+	}
+	actualPort := lis.Addr().(*net.TCPAddr).Port
+
 	fmt.Printf("Repository: %s\n\n", repoName)
 	fmt.Printf("Listening:\n")
-	fmt.Printf("  http://localhost:%d\n", s.config.Port)
+	fmt.Printf("  http://localhost:%d\n", actualPort)
 	if addrs.LAN != "" {
 		fmt.Printf("\nLAN:\n")
-		fmt.Printf("  http://%s:%d\n", addrs.LAN, s.config.Port)
+		fmt.Printf("  http://%s:%d\n", addrs.LAN, actualPort)
 	}
 	cloneAddr := addrs.LAN
 	if cloneAddr == "" {
 		cloneAddr = "localhost"
 	}
 	fmt.Printf("\nClone:\n\n")
-	fmt.Printf("  git clone http://%s:%d/%s.git\n\n", cloneAddr, s.config.Port, repoName)
+	fmt.Printf("  git clone http://%s:%d/%s.git\n\n", cloneAddr, actualPort, repoName)
 	fmt.Printf("Press Ctrl+C to stop.\n")
 
 	errCh := make(chan error, 1)
 	go func() {
-		errCh <- s.http.ListenAndServe()
+		errCh <- s.http.Serve(lis)
 	}()
 
 	select {
