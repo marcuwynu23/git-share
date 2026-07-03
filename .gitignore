@@ -1,0 +1,6 @@
+git-share
+git-share.exe
+*.test
+*.out
+vendor/
+dist/
