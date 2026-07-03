@@ -21,7 +21,7 @@ func testHandler(t *testing.T) *server.Handler {
 		IsBare: false,
 	}
 	config := &server.ServerConfig{
-		Port:     8080,
+		Port:     9720,
 		ReadOnly: true,
 	}
 	return server.NewHandler(repo, config)
@@ -79,14 +79,14 @@ func TestInfo(t *testing.T) {
 	if resp.Bare {
 		t.Error("Bare should be false")
 	}
-	if resp.Port != 8080 {
-		t.Errorf("Port = %d, want 8080", resp.Port)
+	if resp.Port != 9720 {
+		t.Errorf("Port = %d, want 9720", resp.Port)
 	}
 	if !resp.ReadOnly {
 		t.Error("ReadOnly should be true")
 	}
-	if resp.CloneURL != "http://localhost:8080/" {
-		t.Errorf("CloneURL = %q, want http://localhost:8080/", resp.CloneURL)
+	if resp.CloneURL != "http://localhost:9720/" {
+		t.Errorf("CloneURL = %q, want http://localhost:9720/", resp.CloneURL)
 	}
 }
 
@@ -110,7 +110,7 @@ func TestGitReadWriteAllowsPush(t *testing.T) {
 		IsBare: false,
 	}
 	config := &server.ServerConfig{
-		Port:     8080,
+		Port:     9720,
 		ReadOnly: false,
 	}
 	h := server.NewHandler(repo, config)
@@ -167,7 +167,7 @@ func TestNewServerWithHostname(t *testing.T) {
 		IsBare: false,
 	}
 	config := &server.ServerConfig{
-		Port:     8080,
+		Port:     9720,
 		ReadOnly: true,
 		Hostname: "192.168.1.1",
 	}

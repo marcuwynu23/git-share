@@ -11,8 +11,8 @@ import (
 
 func TestDefault(t *testing.T) {
 	cfg := config.Default()
-	if cfg.Port != 8080 {
-		t.Errorf("Port = %d, want 8080", cfg.Port)
+	if cfg.Port != 9720 {
+		t.Errorf("Port = %d, want 9720", cfg.Port)
 	}
 	if cfg.ReadOnly {
 		t.Error("ReadOnly should be false by default")
@@ -69,8 +69,8 @@ func TestLoadSave(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Load() error = %v", err)
 	}
-	if cfg.Port != 8080 {
-		t.Errorf("Port = %d, want 8080 (default)", cfg.Port)
+	if cfg.Port != 9720 {
+		t.Errorf("Port = %d, want 9720 (default)", cfg.Port)
 	}
 
 	cfg.Port = 9090
@@ -111,8 +111,8 @@ func TestLoadNonExistent(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Load() on missing file error = %v", err)
 	}
-	if cfg.Port != 8080 {
-		t.Errorf("Port = %d, want 8080 (default on missing file)", cfg.Port)
+	if cfg.Port != 9720 {
+		t.Errorf("Port = %d, want 9720 (default on missing file)", cfg.Port)
 	}
 }
 
