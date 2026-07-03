@@ -1,62 +1,67 @@
 # Contributing
 
-Thanks for your interest in contributing.
+Thanks for your interest in contributing to `git-share`.
 
-We welcome contributions of all kinds: bug fixes, features, documentation, and suggestions.
+We welcome bug fixes, features, documentation, and suggestions.
 
 ---
 
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork locally
-3. Create a new branch from `main`
-4. Install dependencies and set up the project
+2. Clone your fork:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/git-share.git
+   cd git-share
+   ```
+3. Create a branch from `main`:
+   ```bash
+   git checkout -b feat/your-feature
+   ```
+4. Install dependencies:
+   ```bash
+   go mod download
+   ```
 
 ---
 
 ## Branching Strategy
 
-We follow a structured branching approach:
+We use **trunk-based development** with feature branches off `main`.
 
-### Main Branches
-
-- `main` → Production-ready code
-- `develop` → Integration branch for ongoing development
-
-### Supporting Branches
-
-Use the following naming conventions:
-
-- `feature/<short-description>` → New features
-- `fix/<short-description>` → Bug fixes
-- `chore/<short-description>` → Maintenance tasks
-- `docs/<short-description>` → Documentation updates
-- `refactor/<short-description>` → Code improvements without behavior change
-- `test/<short-description>` → Adding or updating tests
+| Prefix | Purpose |
+|--------|---------|
+| `feat/*` | New features |
+| `fix/*` | Bug fixes |
+| `test/*` | Adding or updating tests |
+| `docs/*` | Documentation changes |
+| `refactor/*` | Code restructuring |
+| `chore/*` | Maintenance tasks |
 
 Examples:
 
 ```
-feature/add-authentication
-fix/login-validation-error
-docs/update-installation-guide
+feat/add-mdns-discovery
+fix/nil-body-panic
+test/cgi-env-windows-paths
 ```
 
 ---
 
 ## Development Workflow
 
-1. Create a branch from `develop` (unless it's a hotfix for production)
-2. Make your changes in a focused branch
-3. Follow the project's coding style and conventions
-4. Add or update tests when applicable
-5. Run local checks before submitting:
-
-```bash
-make test
-make build
-```
+1. Make focused, atomic commits (one logical change per commit)
+2. Follow the project's coding conventions:
+   - Use `gofmt` or `go fmt ./...` before committing
+   - Run `go vet ./...` to catch issues
+   - Keep dependencies minimal (no new imports beyond `gopkg.in/yaml.v3`)
+3. Add or update tests for your changes
+4. Verify everything passes:
+   ```bash
+   go build ./...
+   go test -count=1 ./...
+   ```
+5. Push your branch and open a pull request
 
 ---
 
@@ -67,98 +72,101 @@ We follow the **Conventional Commits** specification.
 ### Format
 
 ```
-<type>(optional scope): <short description>
+<type>: <short description>
 ```
 
-### Common Types
+### Types
 
-- `feat` → New feature
-- `fix` → Bug fix
-- `docs` → Documentation changes
-- `style` → Formatting (no code logic changes)
-- `refactor` → Code restructuring
-- `test` → Adding/updating tests
-- `chore` → Maintenance
+| Type | When to use |
+|------|-------------|
+| `feat` | A new feature |
+| `fix` | A bug fix |
+| `test` | Adding or updating tests |
+| `docs` | Documentation changes |
+| `refactor` | Code restructuring (no behavior change) |
+| `chore` | Maintenance, tooling, CI, config |
 
 ### Examples
 
 ```
-feat(auth): add JWT authentication
-fix(api): handle null response in user service
-docs(readme): update setup instructions
-refactor(core): simplify validation logic
+feat: add web dashboard with live client list
+fix: guard nil request body in HandleSmartHTTP
+test: add integration tests for bare repo smart HTTP
+docs: update installation instructions
+refactor: simplify CGI environment construction
+chore: update Makefile for cross-compilation
 ```
 
 ### Rules
 
-- Use lowercase for type and description
-- Keep messages concise and meaningful
-- Use the body for additional context if needed
+- Use lowercase
+- No period at the end
+- Keep under 72 characters
+- Use the body for additional context when needed
 
 ---
 
 ## Pull Request Process
 
-1. Ensure your branch is up to date with `develop`
-2. Verify all tests and checks pass
-3. Open a pull request targeting `develop` (or `main` for hotfixes)
-4. Clearly describe:
-   - What changed
-   - Why it was needed
-   - Any relevant context
-5. Use the PR template:
-   - [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
+1. Ensure your branch is up to date with `main`:
+   ```bash
+   git fetch origin
+   git rebase origin/main
+   ```
+2. Verify all checks pass:
+   ```bash
+   go build ./...
+   go vet ./...
+   go test -count=1 ./...
+   ```
+3. Open a pull request targeting `main`
+4. Describe:
+   - **What** changed
+   - **Why** it was needed
+   - **How** it was tested
+5. Use the PR template at [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
 
-Optional:
+---
 
-- Include screenshots, logs, or examples if applicable
+## Testing
+
+Tests live alongside source code (`*_test.go` in the same package). We prefer:
+
+- **Table-driven tests** for multiple input/output cases
+- **Integration tests** using `t.TempDir()` and real `git` commands for backend tests
+- Avoid `testing.Main` and external test dependencies
+
+Run all tests:
+
+```bash
+go test -count=1 ./...
+```
 
 ---
 
 ## Reporting Issues
 
-When reporting bugs, please use the provided template:
+Use the [bug report template](.github/ISSUE_TEMPLATE/bug_report.md). Include:
 
-- [`.github/ISSUE_TEMPLATE/bug_report.md`](.github/ISSUE_TEMPLATE/bug_report.md)
-
-Include:
-
-- Description of the problem
 - Steps to reproduce
 - Expected vs actual behavior
-- Environment details (if relevant)
+- `git version` output
+- OS and architecture
 
----
+### Feature Requests
 
-## Suggestions & Feature Requests
+Use the [feature request template](.github/ISSUE_TEMPLATE/feature_request.md). Include:
 
-For feature requests and suggestions, please use:
-
-- [`.github/ISSUE_TEMPLATE/feature_request.md`](.github/ISSUE_TEMPLATE/feature_request.md)
-
-Be sure to include:
-
-- The problem you're trying to solve
+- The problem you're solving
 - Your proposed solution
-- Any alternatives you've considered
+- Alternatives you've considered
 
 ---
 
 ## Code of Conduct
 
-This project follows the guidelines defined in:
-
-- [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
-
+This project follows the guidelines in [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 Be respectful and constructive in all interactions.
-Harassment or inappropriate behavior will not be tolerated.
-
----
-
-## Notes
-
-- Maintainers may request changes before merging
-- Not all contributions may be accepted, but all will be reviewed
 
 ---
 
