@@ -1,4 +1,4 @@
-module github.com/markwayne/git-share
+module github.com/marcuwynu23/git-share
 
 go 1.22
 
