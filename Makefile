@@ -1,5 +1,5 @@
 BINARY   := git-share
-MODULE   := github.com/markwayne/git-share
+MODULE   := github.com/marcuwynu23/git-share
 GO       := go
 
 UNAME_S  := $(shell uname -s 2>/dev/null || echo "windows")
