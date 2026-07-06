@@ -2,20 +2,28 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+The following versions are currently supported with security updates:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| Version | Supported |
+|---|---|
+| 0.1.x (latest) | ✅ |
+| < 0.1.x | ❌ |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability in git-share, please report it privately:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+1. **GitHub Security Advisories:** Go to [Security Advisories](https://github.com/marcuwynu23/git-share/security/advisories/new) and open a draft advisory
+2. **Email:** Contact the maintainer at marcuwynu23 (GitHub) — open a private security report
+
+We will acknowledge receipt within 48 hours and provide an estimated timeline for a fix.
+
+## What to expect
+
+- **Acknowledgment:** within 2 business days
+- **Assessment:** within 5 business days (confirmed or declined)
+- **Fix timeline:** depends on severity — critical issues are prioritized
+
+## Scope
+
+Only the latest stable release is eligible for security patches. Older versions should be upgraded.
