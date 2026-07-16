@@ -21,13 +21,13 @@
 - [What Is git-share?](#what-is-git-share)
 - [Use Cases](#use-cases)
 - [Benefits for Developers](#benefits-for-developers)
-- [Advantages Over Other Tools](#advantages-over-other-tools)
+- [Comparison](#comparison)
 - [User Guide](USER-GUIDE.md)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [CLI Reference](#cli-reference)
+- [CLI / API Reference](#cli--api-reference)
 - [Configuration](#configuration)
-- [Example Output](#example-output)
+- [Examples](#examples)
 - [CI/CD Integration](#cicd-integration)
 - [Development](#development)
 - [Architecture](#architecture)
@@ -101,7 +101,9 @@ Run `git share on` inside any Git repo and you're done. A web dashboard shows cl
 
 ---
 
-## Advantages Over Other Tools
+## Comparison
+
+### Advantages Over Other Tools
 
 | Aspect | git-share | `git daemon` | `git-http-server` | `simple-http-server` | Manual (nginx + fcgiwrap) |
 |---|---|---|---|---|---|
@@ -169,7 +171,7 @@ git clone http://192.168.1.42:9720/
 
 ---
 
-## CLI Reference
+## CLI / API Reference
 
 ### `git share on`
 
@@ -281,7 +283,7 @@ git share config theme light
 
 ---
 
-## Example Output
+## Examples
 
 ### Starting a share
 
